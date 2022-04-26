@@ -14,7 +14,7 @@ $database = new Database();
 $db = $database->getConnection();
 
 // Create new manager object, using ds handle to create connection with database
-$manager = new Manager($db);
+$employee = new Employee($db);
 
 // Get the new values of this manager's attributes
 $manager->manager_id = $_POST['manager_id'];
