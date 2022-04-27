@@ -11,6 +11,7 @@ class Team{
     // database connection and table name
     private $conn;
     private $table_name = "team";
+
  
     // object properties
     public $team_name;
