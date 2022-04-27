@@ -11,6 +11,7 @@ class Team{
     // database connection and table name
     private $conn;
     private $table_name = "team";
+    private $alt_table = "employee";
  
     // object properties
     public $team_name;
@@ -142,5 +143,17 @@ class Team{
         else{
             return false;
         }
+    }
+    function getEmployees() {
+        $query = "SELECT * 
+            FROM 
+                "  . $this->alt_table . " ";
+
+        $stmt = $this->conn->prepare($query);
+
+        if($stmt->execute()){
+            return true;
+        }
+        return false;
     }
 }

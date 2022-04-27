@@ -18,14 +18,11 @@ $content = '<div class="row">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputName1">Manager ID</label>
-                                    <select id = "manager_id" class="form-select" aria-label="Default select example">
-                                        <option selected></option>
-                                    </select>                   
-                                </div> 
+                                    <input type="text" class="form-control" id="manager_id" placeholder="Enter Manager ID">
+                                </div>
                                 <div class="form-group">
                                     <label for="exampleInputName1">Team Members</label>
-                                    <select id = "team_members" class="form-select" aria-label="Default select example">
-                                        multiple={true}
+                                    <select id = "team_members" multiple={true} style={ width:100px } class="form-control" aria-label="Default select example">
                                         <option selected></option>
                                     </select>                   
                                 </div> 
@@ -58,7 +55,7 @@ $(document).ready(function(){
             },
         });
     });
-    function UpdateManager(){
+    function UpdateTeam(){
         $.ajax(
         {
             type: "POST",

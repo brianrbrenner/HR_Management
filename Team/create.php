@@ -20,18 +20,15 @@ $content = '<div class="row">
                                 <label for="exampleInputName1">Team Name</label>
                                 <input type="text" class="form-control" id="name" placeholder="Enter Name">
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputName1">Manager ID</label>
-                                <select id = "manager_id" class="form-select" aria-label="Default select example">
-                                    <option selected></option>
-                                </select>                   
-                            </div> 
-                            <div class="form-group">
-                                <label for="exampleInputName1">Team Members</label>
-                                <select id = "team_members" class="form-select" aria-label="Default select example">
-                                    multiple={true}
-                                    <option selected></option>
-                                </select>                   
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Manager ID</label>
+                                    <input type="text" class="form-control" id="manager_id" placeholder="Enter Manager ID">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Team Members</label>
+                                    <select id = "team_members" multiple={true} defaultvalue={}style={ width:100px } class="form-control" aria-label="Default select example">
+                                        <option selected></option>
+                                    </select>           
                             </div> 
                         </div>
                         
