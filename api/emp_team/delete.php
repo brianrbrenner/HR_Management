@@ -4,7 +4,7 @@
 
 // Include the dataset and object files so that the objects they define can be used
 include_once '../config/database.php';
-include_once '../objects/team.php';
+include_once '../objects/manager.php';
 
 // Create new database object
 $database = new Database();
@@ -13,30 +13,30 @@ $db = $database->getConnection();
 
 // Create new manager object using the ds connection handle to establish 
 // connection between database and this object
-$team = new Team($db);
+$manager = new Manager($db);
 
 // Get the id of the manager tuple to delete
-$team->team_name = $_POST['team_name'];
+$manager->manager_id = $_POST['manager_id'];
 
 // Remove the corresponding manager tuple
 // If remove successful create a (status, message) pair describing
 // deletion success
-if($team->delete()){
-    $team_arr = array(
+if($manager->delete()){
+    $manager_arr = array(
         "status" => true,
         "message" => "Successfully removed!"
     );
 }
 // Otherwise if failure to delete, create corresponding (status, message) pair
 else {
-    $team_arr = array(
+    $manager_arr = array(
         "status" => false,
-        "message" => "Team cannot be deleted"
+        "message" => "Manager cannot be deleted; Maybe they are assigned to a patient!"
     );
 }
 
 // Print the json encoded result of the deletion attempt to browser
-print_r(json_encode($team_arr));
+print_r(json_encode($manager_arr));
 ?>
 
 

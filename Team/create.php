@@ -10,7 +10,7 @@ $content = '<div class="row">
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Add Manager</h3>
+                            <h3 class="box-title">Add Employee to Team</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
@@ -32,7 +32,7 @@ $content = '<div class="row">
                         
                         <!-- /.box-body -->
                         <div class="box-footer">
-                            <input type="button" class="btn btn-primary" onClick="AddManager()" value="Submit"></input>
+                            <input type="button" class="btn btn-primary" onClick="AddTeam()" value="Submit"></input>
                         </div>
                         </form>
                     </div>
@@ -44,7 +44,7 @@ $content = '<div class="row">
 include('../master.php');
 ?>
 <script>
-  function AddManager(){
+  function AddTeam(){
 
         $.ajax(
         {

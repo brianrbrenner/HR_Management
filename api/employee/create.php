@@ -1,6 +1,6 @@
 <?php 
 
-// This file defines the operations used to create new manager tuples within
+// This file defines the operations used to create new employee tuples within
 // our tables in mySQL from the input on the browser
 
 // include the database and all object files
@@ -14,18 +14,19 @@ $database = new Database();
 $db = $database->getConnection(); 
 
 
-// Create new manager object using the db connection handle to establish 
+// Create new employee object using the db connection handle to establish 
 // the connection between this object and the db
 
-// Set attribute values of manager object using information retrieved from
+// Set attribute values of employee object using information retrieved from
 // user input thorugh POST request
 
 if(isset($_POST["action"]))
 {
-    if(isset($_POST["action"]) == "getDept")
+    $database = new Database();
+    $db = $database->getConnection();
+    if($_POST["action"] == "getDept")
     {
-        $database = new Database();
-        $db = $database->getConnection();
+        
         $department = new Department($db);
         $stmt = $department->read();
         $num = $stmt->rowCount();
@@ -50,25 +51,23 @@ if(isset($_POST["action"]))
 
 
     }
-    else if(isset($_POST["action"]) == "create")
+    else if($_POST["action"] == "create")
     {
-        $database = new Database();
-        $db = $database->getConnection();
         $employee = new Employee($db);
-        $employee->id = $_POST['id'];
         $employee->name = $_POST['name'];
-        $employee->deparment = $_POST['department'];
+        $employee->department = $_POST['department'];
         $employee->phone = $_POST['phone'];
         $employee->email = $_POST['email'];
         $employee->salary = $_POST['salary'];
         $employee->start_date = $_POST['start_date'];
+        $employee->start_date = date('Y-m-d H:i:s');
 
         // create the doctor
         if($employee->create()){
             $employee_arr=array(
                 "status" => true,
                 "message" => "Successfully added!",
-                "id" => $employee->id,
+            
                 "name" => $employee->name,
                 "department" => $employee->department,
                 "phone" => $employee->phone,
@@ -86,5 +85,4 @@ if(isset($_POST["action"]))
         print_r(json_encode($employee_arr));
     }
 }
-
 ?>

@@ -1,5 +1,5 @@
 <?php
-class Team{
+class Emp_Team{
 
     //==============================//
     // dependencies need to be added 
@@ -10,25 +10,23 @@ class Team{
  
     // database connection and table name
     private $conn;
-    private $table_name = "team";
-
+    private $table_name = "emp_team";
  
     // object properties
+    public $emp_id;
     public $team_name;
-    public $manager_id;
-    public $total_members;
  
     // constructor with $db as database connection
     public function __construct($db){
         $this->conn = $db;
     }
 
-    // read all doctors
+    // read all emp_team tuples
     function read(){
     
         // select all query
         $query = "SELECT
-                    `team_name`, `manager_id`, `total_members`
+                    `emp_id`, `team_name`
                 FROM
                     " . $this->table_name . " ";
     
@@ -41,16 +39,16 @@ class Team{
         return $stmt;
     }
 
-    // get single doctor data
+    // get single emp_team tuple
     function read_single(){
     
         // select all query
         $query = "SELECT
-                    `team_name`, `manager_id`, `total_members`
+                    `emp_id`, `team_name`
                 FROM
                     " . $this->table_name . " 
-                WHERE
-                    team_name= '".$this->team_name."'";
+                WHERE 
+                    team_name= '".$this->team_name."' AND emp_id= '".$this->emp_id."'";  
     
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -60,7 +58,7 @@ class Team{
         return $stmt;
     }
 
-    // create doctor
+    // create new emp_team tuple
     function create(){
     
         if($this->isAlreadyExist()){
@@ -69,9 +67,9 @@ class Team{
         
         // query to insert record
         $query = "INSERT INTO  ". $this->table_name ." 
-                        (`team_name`, `manager_id`, `total_memebers`)
+                        (`emp_id`, `team_name`)
                   VALUES
-                        ('".$this->team_name."', '".$this->manager_id."', '".$this->total_members."')";
+                        ('".$this->emp_id."', '".$this->team_name."')";
     
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -84,8 +82,10 @@ class Team{
 
         return false;
     }
-
-    // update doctor 
+    // May delete later on; I don't think the update() function is needed for 
+    // emp_team relation because all emp_team tuples are created or destroyed
+    // never partially modified
+    // update emp_team tuple
     function update(){
     
         // query to insert record
@@ -105,14 +105,14 @@ class Team{
         return false;
     }
 
-    // delete doctor
+    // delete emp_team tuple
     function delete(){
         
         // query to insert record
         $query = "DELETE FROM
                     " . $this->table_name . "
                 WHERE
-                    team_name= '".$this->team_name."'";
+                    emp_id= '".$this->emp_id."' AND team_name= '".$this->team_name. "'";
         
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -129,7 +129,7 @@ class Team{
             FROM
                 " . $this->table_name . " 
             WHERE
-                team_name='".$this->team_name."'";
+            emp_id= '".$this->emp_id."' AND team_name= '".$this->team_name. "'";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);

@@ -77,7 +77,7 @@ $content = '
     });
 
 
- function getTodayDate() {
+    function getTodayDate() {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -86,7 +86,6 @@ $content = '
     today = mm + '/' + dd + '/' + yyyy;
     return today;
   }
-
 
 
 
@@ -106,13 +105,13 @@ $content = '
                 start_date: getTodayDate()
             },
             error: function (result) {
-                alert("heeii");
+                alert("Error");
                 alert(result.responseText);
             },
             success: function (result) {
                 if (result['status'] == true) {
-                    alert("Successfully Added New Manager!");
-                    window.location.href = '/HR_Management/Employee';
+                    alert("Successfully Added New Employee!");
+                    window.location.href = '/HR/Employee';
                 }
                 else {
                     alert(result['message']);

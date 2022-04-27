@@ -1,11 +1,11 @@
 <?php 
 
-// This file defines the operations used to create new manager tuples within
+// This file defines the operations used to create new emp_team tuples within
 // our tables in mySQL from the input on the browser
 
 // include the database and all object files
 include_once '../config/database.php';
-include_once '../objects/team.php';
+include_once '../objects/emp_team.php';
 
 // Get connection with the database using database object
 $database = new Database();
@@ -13,41 +13,41 @@ $database = new Database();
 $db = $database->getConnection(); 
 
 
-// Create new manager object using the db connection handle to establish 
+// Create new emp_team object using the db connection handle to establish 
 // the connection between this object and the db
-$team = new Team($db);
+$emp_team = new Emp_Team($db);
 
-// Set attribute values of manager object using information retrieved from
-// user input thorugh POST request
-$team->name= $_POST['team_name'];
-$team->manager_id= $_POST['manager_id'];
-$manager->total_members= $_POST['total_members'];
+// Set attribute values of emp_team object using information retrieved from
+// user input through POST request
+$emp_team->emp_id= $_POST['name'];
+$manager->phone = $_POST['phone'];
+$manager->email = $_POST['email'];
 
 
-// Now that all (except id which is automatically assigned) attributes are
-// assigned, create manager object
-if ($team->create()){
+
+if ($manager->create()){
     // If creation successful, create an array storing the attributes and a
     // status and message describing the fate of the creation
-    $team_arr=array(
+    $manager_arr=array(
         "status" => true,
         "message" => "Successfully Signup!",
-        "team_name" => $team->team_name,
-        "manager_id" => $team->manager_id,
-        "total_members" => $team->total_members,
+        "manager_id" => $manager->manager_id,
+        "name" => $manager->name,
+        "phone" => $manager->phone,
+        "email" => $manager->email
      );
 }
 // Otherwise, if the manager tuple can not be added (in which case a tuple with
 // that email already exists), created an array with a failure status and message
 else {
-    $team_arr=array(
+    $manager_arr=array(
         "status" => false,
-        "message"=> "Team with that name already exists!"
+        "message"=> "Manager with that email already exists!"
 
     );
 }
 
 // Print the array to manager array to screen in json format
-print_r(json_encode($team_arr));
+print_r(json_encode($manager_arr));
 
 ?>

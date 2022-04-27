@@ -17,7 +17,7 @@ $db = $database->getConnection();
 // a connection with the database
 $employee = new employee($db);
 // Retrieve the select all employee statement by calling read() behavior
-$stmt = $employee->read();
+$stmt = $employee->read_with_salary();
 $num = $stmt->rowCount();
         // check if more than 0 record found
         if($num>0){
@@ -33,7 +33,7 @@ $num = $stmt->rowCount();
                     "dept_name" => $dept_name,
                     "phone" => $phone,
                     "email" => $email,
-                    //"salary" => $salary,
+                    "salary" => $salary,
                     "start_date" => $start_date,
                 );
                 // Append the employee_item to the list of employees
