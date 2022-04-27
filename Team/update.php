@@ -6,28 +6,33 @@ $content = '<div class="row">
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Update Manager</h3>
+                            <h3 class="box-title">Update Team</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
                         <form role="form">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="exampleInputName1">Name</label>
+                                    <label for="exampleInputName1">Team Name</label>
                                     <input type="text" class="form-control" id="name" placeholder="Enter Name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputName1">Phone</label>
-                                    <input type="email" class="form-control" id="phone" placeholder="Enter Phone">
-                                </div>
+                                    <label for="exampleInputName1">Manager ID</label>
+                                    <select id = "manager_id" class="form-select" aria-label="Default select example">
+                                        <option selected></option>
+                                    </select>                   
+                                </div> 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail11">Email</label>
-                                    <input type="text" class="form-control" id="email" placeholder="Enter Email">
-                                </div>
+                                    <label for="exampleInputName1">Team Members</label>
+                                    <select id = "team_members" class="form-select" aria-label="Default select example">
+                                        multiple={true}
+                                        <option selected></option>
+                                    </select>                   
+                                </div> 
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <input type="button" class="btn btn-primary" onClick="UpdateManager()" value="Update"></input>
+                                <input type="button" class="btn btn-primary" onClick="UpdateTeam()" value="Update"></input>
                             </div>
                         </form>
                     </div>
@@ -41,12 +46,12 @@ include('../master.php');
 $(document).ready(function(){
         $.ajax({
             type: "GET",
-            url: "../api/manager/read_single.php?manager_id=<?php echo $_GET['manager_id']; ?>",
+            url: "../api/team/read_single.php?team_name=<?php echo $_GET['team_name']; ?>",
             dataType: 'json',
             success: function(data) {
-                $('#name').val(data['name']);
-                $('#phone').val(data['phone']);
-                $('#email').val(data['email']);
+                $('#name').val(data['team_name']);
+                $('#manager_id').val(data['manager_id']);
+                $('#team_members').val(data['total_members']);
             },
             error: function (result) {
                 console.log(result);
@@ -57,13 +62,12 @@ $(document).ready(function(){
         $.ajax(
         {
             type: "POST",
-            url: '../api/manager/update.php',
+            url: '../api/team/update.php',
             dataType: 'json',
             data: {
-                manager_id: <?php echo $_GET['manager_id']; ?>,
-                name: $("#name").val(),
-                phone: $("#phone").val(),
-                email: $("#email").val()      
+                team_name: <?php echo $_GET['team_name']; ?>,
+                manager_id: $("#manager_id").val(),
+                total_members: $("#team_members").val()      
 
             },
             error: function (result) {
@@ -71,8 +75,8 @@ $(document).ready(function(){
             },
             success: function (result) {
                 if (result['status'] == true) {
-                    alert("Successfully Updated Managed!");
-                    window.location.href = '/HR/manager';
+                    alert("Successfully Updated Team!");
+                    window.location.href = '/HR/team';
                 }
                 else {
                     alert(result['message']);

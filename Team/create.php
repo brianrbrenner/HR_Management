@@ -10,29 +10,34 @@ $content = '<div class="row">
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Add Manager</h3>
+                            <h3 class="box-title">Add Team</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
                         <form role="form">
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="exampleInputName1">Name</label>
+                                <label for="exampleInputName1">Team Name</label>
                                 <input type="text" class="form-control" id="name" placeholder="Enter Name">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName1">Phone</label>
-                                <input type="email" class="form-control" id="phone" placeholder="Enter Phone">
-                            </div>
+                                <label for="exampleInputName1">Manager ID</label>
+                                <select id = "manager_id" class="form-select" aria-label="Default select example">
+                                    <option selected></option>
+                                </select>                   
+                            </div> 
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email">
-                            </div>
+                                <label for="exampleInputName1">Team Members</label>
+                                <select id = "team_members" class="form-select" aria-label="Default select example">
+                                    multiple={true}
+                                    <option selected></option>
+                                </select>                   
+                            </div> 
                         </div>
                         
                         <!-- /.box-body -->
                         <div class="box-footer">
-                            <input type="button" class="btn btn-primary" onClick="AddManager()" value="Submit"></input>
+                            <input type="button" class="btn btn-primary" onClick="AddTeam()" value="Submit"></input>
                         </div>
                         </form>
                     </div>
@@ -44,25 +49,25 @@ $content = '<div class="row">
 include('../master.php');
 ?>
 <script>
-  function AddManager(){
+  function AddTeam(){
 
         $.ajax(
         {
             type: "POST",
-            url: '../api/manager/create.php',
+            url: '../api/team/create.php',
             dataType: 'json',
             data: {
-                name: $("#name").val(),
-                phone: $("#phone").val(),        
-                email: $("#email").val()
+                team_name: $("#name").val(),
+                manager_id: $("#manager_id").val(),        
+                total_members: $("#team_members").val()
             },
             error: function (result) {
                 alert(result.responseText);
             },
             success: function (result) {
                 if (result['status'] == true) {
-                    alert("Successfully Added New Manager!");
-                    window.location.href = '/HR/manager';
+                    alert("Successfully Added New Team!");
+                    window.location.href = '/HR/team';
                 }
                 else {
                     alert(result['message']);

@@ -19,9 +19,15 @@ $team = new Team($db);
 
 // Set attribute values of manager object using information retrieved from
 // user input thorugh POST request
+<<<<<<< Updated upstream
 $team->name= $_POST['team_name'];
 $team->manager_id= $_POST['manager_id'];
 $manager->total_members= $_POST['total_members'];
+=======
+$team->team_name= $_POST['team_name'];
+$team->manager_id = $_POST['manager_id'];
+$team->total_members = $_POST['total_members'];
+>>>>>>> Stashed changes
 
 
 // Now that all (except id which is automatically assigned) attributes are
@@ -42,7 +48,11 @@ if ($team->create()){
 else {
     $team_arr=array(
         "status" => false,
+<<<<<<< Updated upstream
         "message"=> "Team with that name already exists!"
+=======
+        "message"=> "Team already exists!"
+>>>>>>> Stashed changes
 
     );
 }

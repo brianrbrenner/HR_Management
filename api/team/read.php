@@ -5,7 +5,10 @@
 // Include the database and object fiels
 include_once '../config/database.php';
 include_once '../objects/team.php';
+<<<<<<< Updated upstream
 //include_once './debug.php';
+=======
+>>>>>>> Stashed changes
 
 
 
@@ -19,7 +22,11 @@ $db = $database->getConnection();
 $team = new Team($db);
 
 // Retrieve the select all manager statement by calling read() behavior
+<<<<<<< Updated upstream
 $stmt = $->read();
+=======
+$stmt = $team->read();
+>>>>>>> Stashed changes
 
 $num= $stmt->rowCount();
 

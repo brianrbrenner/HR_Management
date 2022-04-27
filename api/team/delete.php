@@ -31,7 +31,11 @@ if($team->delete()){
 else {
     $team_arr = array(
         "status" => false,
+<<<<<<< Updated upstream
         "message" => "Team cannot be deleted"
+=======
+        "message" => "Team cannot be deleted."
+>>>>>>> Stashed changes
     );
 }
 
