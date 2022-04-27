@@ -83,15 +83,6 @@
         <li class="header">Menu</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="treeview">
-          <a href="#"><i class="fa fa-medkit"></i> <span>Doctors</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="/HR/doctor/create.php">Create Doctor</a></li>
-            <li><a href="/HR/doctor">All Doctors</a></li>
-          </ul>
           <!-- Managers button -->
           <a href="#"> <span>Managers</span>
             <span class="pull-right-container">
