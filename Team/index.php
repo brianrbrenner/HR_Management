@@ -1,33 +1,49 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script type="text/javascript" src="bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <?php
-// Define the content which is displayed within the master.php file
-  $content = '<div class="row">
+  $content = 
+  '<div class="row">
                 <div class="col-xs-12">
                   <div class="box">
                     <div class="box-header">
-                     <h3 class="box-title">Manager List</h3>
+                     <h3 class="box-title">Team List List</h3>
                     </div>
                     <!-- /.box-header -->
-                    <div class="box-body">
-                      <table id="managers" class="table table-bordered table-hover">
-                        <thead>
-                          <tr> 
-                            <th>Name</th>
-                              <th>Phone</th>
-                              <th>Email</th>
-                              <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                        <tfoot>
-                          <tr>
-                            <th>Name</th>
-                              <th>Phone</th>
-                              <th>Email</th>
-                              <th>Action</th>
-                          </tr>
-                        </tfoot>
-                      </table>
+                    <div  class="box-body">
+                  
+
+
+
+
+                  <ul class="sidebar-menu" data-widget="tree">
+
+                    <li id = "team_tree" class="treeview">
+
+
+                    
+                        <a href="#"><i class="fa fa-medkit"></i> <span>Doctors</span></a>
+                        
+                        
+                        
+                        <ul class="treeview-menu">
+                            <li><a href="/HR/doctor/create.php">Delete Team</a></li>
+                            <li><a href="/HR/doctor">Add new Member</a></li>
+                        </ul>
+
+
+                        
+                    
+
+                    </li>
+                  </ul>
+
+
+
+
+
                     </div>
                     <!-- /.box-body -->
                   </div>
@@ -47,22 +63,31 @@
       // to get data from a database
       type: "GET",
       // url of file which specifies how to ge the data
-      url: "../api/manager/read.php",
+      url: "../api/team/read.php",
       dataType: 'json',
       // upon success, this function creates tuples for each manager in the table 
       // and appends them to the response variable
-      success: function(data) {
-        var response="";
-        for(var user in data){
-          response += 
-          //console.log(data[user].manager_id);
-            "<tr>"+
-              "<td>"+data[user].name+"</td>"+
-              "<td>"+data[user].phone+"</td>"+
-              "<td>"+data[user].email+"</td>"+
-              "<td><a href='update.php?manager_id="+data[user].manager_id+"'>Edit</a> | <a href='#' onClick=Remove('"+data[user].manager_id+"')>Remove</a></td>"+
-            "</tr>"
-    
+      success: function(data1) {
+        for(var team_name in data1){
+          $.ajax({
+              type: "POST",
+              url: "../api/team/read.php",
+              dataType: 'json',
+              data:{
+                action: "readEmpByTeamName",
+                team_name = teamname,
+              },
+              success: function(data2)
+              {
+                var res = "";
+                res += 
+                for(var employee in data2)
+                {
+
+                }
+              }
+
+          })
         }
         // appends the response to the the table whose id=manager
         $(response).appendTo($("#managers"));
