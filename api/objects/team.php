@@ -11,6 +11,7 @@ class Team{
     // database connection and table name
     private $conn;
     private $table_name = "team";
+    private $team_linking_table = "emp_team";
 
  
     // object properties
@@ -144,4 +145,29 @@ class Team{
             return false;
         }
     }
+    function addEmployeeListToTeam($team_name, $employee_list){
+
+        $query = "INSERT INTO 
+                    ". $this->team_linking_table ."
+                    (`emp_id`,`team_name`) values ";
+        $values = " ";
+
+        foreach ($employee_list as $emp_id) {
+            $values.= "('".$emp_id."', '".$team_name."'),";
+        }
+        $values = substr($values, 0, -1);
+        $query.= $values;
+                
+        
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+        
+        // execute query
+        if($stmt->execute()){
+            return true;
+        }
+        return false;
+    }
+
+
 }

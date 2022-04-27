@@ -157,4 +157,21 @@ class Employee{
             return false;
         }
     }
+    function readAddableEmp($team_name)
+    {
+        $query = "SELECT *
+        FROM employee 
+        WHERE emp_id 
+        NOT IN (
+            SELECT emp_team.emp_id 
+            FROM emp_team 
+            where emp_team.team_name= '".$team_name."')";
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+    
+        // execute query
+        $stmt->execute();
+    
+        return $stmt;
+    }
 }
