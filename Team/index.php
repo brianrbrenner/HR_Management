@@ -124,7 +124,6 @@ function EmpTreeNode(emp_name,emp_id)
 
                 for(var employee in data2)
                 {
-                  alert(data2[employee].name);
                   team_content += EmpTreeNode(data2[employee].name,data2[employee].emp_id);
                 }
 
