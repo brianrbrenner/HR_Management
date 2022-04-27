@@ -1,25 +1,76 @@
-<?php 
+<?php
+$content = '
+            <style>
+            </style>
+                <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                  <!-- general form elements -->
+                  <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Add Employee</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form role="form">
+                      <div class="box-body">
+                        <div class="form-group">
+                          <label for="exampleInputName1">Name</label>
+                          <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                        </div>
+                        
+                    <div class="form-group">
+                        <label for="exampleInputName1">Department</label>
+                        <select id = "dept_opt" class="form-select" aria-label="Default select example">
+                            <option selected>None</option>
+                        </select>                   
+                    </div>
+                    
+                        <div class="form-group">
+                          <label for="exampleInputphone">Phone</label>
+                          <input type="text" class="form-control" id="phone" placeholder="Enter Phone">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email address</label>
+                          <input type="email" class="form-control" id="email" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputName1">Salary</label>
+                          <input type="text" class="form-control" id="salary" placeholder="Enter salary">
+                        </div>
+                      </div>
+                      <!-- /.box-body -->
+                      <div class="box-footer">
+                        <input type="button" class="btn btn-primary" onClick="AddEmployee()" value="Submit"></input>
+                      </div>
+                    </form>
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>';
+  include('../master.php');
+?>
+<script>
+     $(document).ready(function(){
+        $.ajax(
+            {
+                type: "POST",
+                url:'../api/employee/create.php',
+                dataType: 'json',
+                data:{
+                    action: "getDept"
+                },
+                success: function(data){
+                    var response = "";
+                    for (var dep in data)
+                    {
+                        response+= 
+                        "<option value="+ data[dep].dept_name +">" + data[dep].dept_name + "</option>";
+                    }
+                    $(response).appendTo($("#dept_opt"));
+                }
 
-// This file defines the operations used to create new manager tuples within
-// our tables in mySQL from the input on the browser
-
-// include the database and all object files
-include_once '../config/database.php';
-include_once '../objects/employee.php';
-include_once '../objects/department.php';
-
-// Get connection with the database using database object
-$database = new Database();
-// db serves as our handle to the connection to our database
-$db = $database->getConnection(); 
-
-
-// Create new manager object using the db connection handle to establish 
-// the connection between this object and the db
-
-// Set attribute values of manager object using information retrieved from
-// user input thorugh POST request
-
+<<<<<<< Updated upstream
 if(isset($_POST["action"]))
 {
     $database = new Database();
@@ -80,9 +131,41 @@ if(isset($_POST["action"]))
                 "status" => false,
                 "message" => "Email already exists!"
             );
+=======
             }
-        print_r(json_encode($employee_arr));
-    }
-}
+        )
+ 
+    
+    });
 
-?>
+  function AddEmployee(){
+        $.ajax(
+        {
+            type: "POST",
+            url: '../api/employee/create.php',
+            dataType: 'json',
+            data: {
+                action: "create",
+                name: $("#name").val(),
+                department: $("#dept_opt").val(),
+                phone: $("#phone").val(),
+                email: $("#email").val(),      
+                salary: $("#salary").val(),
+            },
+            error: function (result) {
+                alert("heeii");
+                alert(result.responseText);
+            },
+            success: function (result) {
+                if (result['status'] == true) {
+                    alert("Successfully Added New Manager!");
+                    window.location.href = '/HR_Management/Employee';
+                }
+                else {
+                    alert(result['message']);
+                }
+>>>>>>> Stashed changes
+            }
+        });
+    }
+</script>
