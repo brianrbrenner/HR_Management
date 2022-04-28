@@ -212,12 +212,6 @@ create function find_dept_avg_salary(department_name varchar(20))
 	END //
 DELIMITER ;
 
--- //////////////////////////// --
--- this is the dummy data page
--- use with caution 
---
-
--- dummy data for manager
 
 insert into manager (manager_id, name, phone, email) values ('00000', 'madonna', '1234567890', 'trueBlue@gmail.com');
 insert into manager (manager_id, name, phone, email) values ('00001', 'michael jackson', '2345678901', 'thriller@gmail.com');
@@ -236,7 +230,6 @@ insert into manager (manager_id, name, phone, email) values ('00013', 'rick astl
 insert into manager (manager_id, name, phone, email) values ('00014', 'john lennon', '6543210987', 'imagine@gmail.com');
 insert into manager (manager_id, name, phone, email) values ('00015', 'bob dylan', '5432109876', 'blondeOnBlonde@gmail.com');
 
--- dummy data for department
 insert into department (dept_name, budget, phone, building) values ('software engineering', '1000000', '0987654321', 'math and science');
 insert into department (dept_name, budget, phone, building) values ('physics', '3000000', '9876543210', 'williams');
 insert into department (dept_name, budget, phone, building) values ('music', '900000', '8765432109', 'glauser');
@@ -244,8 +237,6 @@ insert into department (dept_name, budget, phone, building) values ('visual arts
 insert into department (dept_name, budget, phone, building) values ('medical', '5000000', '6543210987', 'cunningham');
 insert into department (dept_name, budget, phone, building) values ('chemistry', '15000000', '5432109876', 'isb');
 
-
--- dummy data for employee
 insert into employee (emp_id, name, dept_name, phone, email, salary, start_date) values ('99999', 'john cena', 'software engineering', '1234567890', 'cena@gmail.com', '92000', '10/21/1999');
 insert into employee (emp_id, name, dept_name, phone, email, salary, start_date) values ('99998', 'bjarne stroustrup', 'software engineering', '2345678901', 'c++@gmail.com', '100000', '5/20/1989');
 insert into employee (emp_id, name, dept_name, phone, email, salary, start_date) values ('99997', 'snoop dog', 'music', '3456789012', 'snoop@gmail.com', '100000', '9/21/1999');
@@ -276,10 +267,7 @@ insert into employee (emp_id, name, dept_name, phone, email, salary, start_date)
 insert into employee (emp_id, name, dept_name, phone, email, salary, start_date) values ('99971', 'meredith grey', 'medical', '9135724680', 'fakeMedicine@gmail.com', '92000', '9/3/1999');
 insert into employee (emp_id, name, dept_name, phone, email, salary, start_date) values ('99970', 'dwight schrute', 'physics', '0246813579', 'schruteFarms@gmail.com', '92000', '10/2/1999');
 
---/////////////////////////--
--- read me carefully
--- this is the dummy dummy data for teams
--- if you want data with more offical titles please reference line 110
+
 
 insert into team (team_name, manager_id, total_members) values ('the A team', '00001', '10');
 insert into team (team_name, manager_id, total_members) values ('the breakfast club', '00015', '5');
@@ -287,10 +275,6 @@ insert into team (team_name, manager_id, total_members) values ('blue mountain s
 insert into team (team_name, manager_id, total_members) values ('average joes gym', '00007', '5');
 insert into team (team_name, manager_id, total_members) values ('the standlot', '00002', '4');
 
---//////////////////////////////////////--
--- read me carefully
--- this is the dummy dummy data for emp_team
--- if you use offical titles please reference line 121
 
 insert into emp_team (emp_id, team_name) values ('99999', 'the A team');
 insert into emp_team (emp_id, team_name) values ('99998', 'the A team');
@@ -325,51 +309,3 @@ insert into emp_team (emp_id, team_name) values ('99974', 'the standlot');
 insert into emp_team (emp_id, team_name) values ('99973', 'the standlot');
 insert into emp_team (emp_id, team_name) values ('99972', 'the standlot');
 insert into emp_team (emp_id, team_name) values ('99971', 'the standlot');
-
-/*
---///////////////////////////////////////--
--- more offical sounding data
--- dummy data for teams
-
-insert into team (team_name, manager_id, total_members) values ('alpha', '00001', '10');
-insert into team (team_name, manager_id, total_members) values ('beta', '00015', '5');
-insert into team (team_name, manager_id, total_members) values ('gamma', '00013', '5');
-insert into team (team_name, manager_id, total_members) values ('theta', '00007', '5');
-insert into team (team_name, manager_id, total_members) values ('phi', '00002', '4');
-
--- dummy data for emp_team
-
-insert into emp_team (emp_id, team_name) values ('99999', 'alpha');
-insert into emp_team (emp_id, team_name) values ('99998', 'alpha');
-insert into emp_team (emp_id, team_name) values ('99997', 'alpha');
-insert into emp_team (emp_id, team_name) values ('99996', 'alpha');
-insert into emp_team (emp_id, team_name) values ('99995', 'alpha');
-insert into emp_team (emp_id, team_name) values ('99994', 'alpha');
-insert into emp_team (emp_id, team_name) values ('99993', 'alpha');
-insert into emp_team (emp_id, team_name) values ('99992', 'alpha');
-insert into emp_team (emp_id, team_name) values ('99991', 'alpha');
-insert into emp_team (emp_id, team_name) values ('99990', 'alpha');
-
-insert into emp_team (emp_id, team_name) values ('99989', 'beta');
-insert into emp_team (emp_id, team_name) values ('99988', 'beta');
-insert into emp_team (emp_id, team_name) values ('99987', 'beta');
-insert into emp_team (emp_id, team_name) values ('99986', 'beta');
-insert into emp_team (emp_id, team_name) values ('99985', 'beta');
-
-insert into emp_team (emp_id, team_name) values ('99970', 'gamma');
-insert into emp_team (emp_id, team_name) values ('99983', 'gamma');
-insert into emp_team (emp_id, team_name) values ('99982', 'gamma');
-insert into emp_team (emp_id, team_name) values ('99981', 'gamma');
-insert into emp_team (emp_id, team_name) values ('99980', 'gamma');
-
-insert into emp_team (emp_id, team_name) values ('99979', 'theta');
-insert into emp_team (emp_id, team_name) values ('99978', 'theta');
-insert into emp_team (emp_id, team_name) values ('99977', 'theta');
-insert into emp_team (emp_id, team_name) values ('99976', 'theta');
-insert into emp_team (emp_id, team_name) values ('99975', 'theta');
-
-insert into emp_team (emp_id, team_name) values ('99974', 'phi');
-insert into emp_team (emp_id, team_name) values ('99973', 'phi');
-insert into emp_team (emp_id, team_name) values ('99972', 'phi');
-insert into emp_team (emp_id, team_name) values ('99971', 'phi');
-*/
