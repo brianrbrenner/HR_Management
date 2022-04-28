@@ -37,7 +37,7 @@
                   <ul class="sidebar-menu" data-widget="tree">
 
                     <li id = "team_tree" class="treeview">
-                    <li id = "team_tree"><li><button style="width:100%;text-align: left;" type="button" class="btn btn-info"  onClick=redirectToCreate()>Add Employee</button></li></li>
+                    <li id = "team_tree"><li><button style="width:100%;text-align: left;" type="button" class="btn btn-info"  onClick=redirectToCreate()>Add a new Team</button></li></li>
                     </li>
                   </ul>
 
@@ -99,7 +99,7 @@ function TeamTreeTop(team_name,data2,currentIndex)
     var r = "";
     r += "<a href='#'><i class='fa fa-medkit'></i> <span>" + team_name + "</span></a>"
       +  " <ul class='treeview-menu'>"
-      +  " <li><li><button style='width:100%;text-align: left;' type='button' class='btn btn-info' data-toggle='modal' data-target='#myModal' onClick=changeCurrentWorkingTeam('"+team_name+"')>Add Employee</button></li></li>"
+      +  " <li><li><button style='width:100%;text-align: left;' type='button' class='btn btn-info' data-toggle='modal' data-target='#myModal' onClick=changeCurrentWorkingTeam('"+team_name+"')>Add Employees to " +team_name + " Team</button></li></li>"
       +  " <li><a href='#' onClick=RemoveTeam('"+team_name+"')>Delete Team</a></li>"
       +  " <li><li class='treeview'>"
       +  " <a href='#'><i class='fa fa-medkit'></i> <span>Members</span>"
@@ -129,8 +129,8 @@ function EmpTreeNode(emp_name,emp_id)
       +  "</span>"
       +  "</a>"
       +  "<ul class='treeview-menu'>"
-      +  "<li><a href='/HR/Team?emp_id=" +emp_id + " '>Details</a></li>"
-      +  "<li><a href='/HR/Team/create.php?emp_id=" +emp_id + "'>Remove From Team</a></li>"
+      +  "<li><a href='/HR_Management/Team?emp_id=" +emp_id + " '>Details</a></li>"
+      +  "<li><a href='/HR_Management/Team/create.php?emp_id=" +emp_id + "'>Remove From Team</a></li>"
       +  "</ul></li></li>"
 
     return r;
