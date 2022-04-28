@@ -98,7 +98,7 @@
           // indicating such
           if (result['status'] == true) {
             alert("Successfully Removed Manager!");
-            window.location.href = '/HR_Managementmanager';
+            window.location.href = '/HR_Management/manager';
 
           }
           // Otherwise, if it could not be deleted, print the message contained within

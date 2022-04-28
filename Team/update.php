@@ -73,7 +73,7 @@ $(document).ready(function(){
             success: function (result) {
                 if (result['status'] == true) {
                     alert("Successfully Updated Team!");
-                    window.location.href = '/HR_Managementteam';
+                    window.location.href = '/HR_Management/team';
                 }
                 else {
                     alert(result['message']);

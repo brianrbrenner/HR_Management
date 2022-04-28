@@ -93,7 +93,7 @@
         }
         // appends the response to the the table whose id=employee
         $(response).appendTo($("#employee"));
-        window.location.href = '/HR_ManagementEmployee/displaybyDept.php';
+        window.location.href = '/HR_Management/Employee/displaybyDept.php';
       }
 
     });

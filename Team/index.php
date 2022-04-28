@@ -1,8 +1,4 @@
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
@@ -116,8 +112,8 @@ function TeamTreeTop(team_name,data2,currentIndex)
     var r = "";
     r += "<a href='#'><i class='fa fa-medkit'></i> <span>" + team_name + "</span></a>"
       +  " <ul class='treeview-menu'>"
-      +  " <li><li><button style='width:100%;text-align: left;' type='button' class='btn btn-info' data-toggle='modal' data-target='#myModal' onClick=changeCurrentWorkingTeam('"+team_name+"')>Add Employees to " +team_name + " Team</button></li></li>"
-      +  " <li><a href='#' onClick=RemoveTeam('"+team_name+"')>Delete Team</a></li>"
+      +  " <li><li><button style='width:100%;text-align: left;' type='button' class='btn btn-info' data-toggle='modal' data-target='#myModal' onClick=changeCurrentWorkingTeam('"+team_name.replaceAll(" ","_")+"')>Add Employees to " +team_name + " Team</button></li></li>"
+      +  " <li><a href='#' onClick=RemoveTeam('"+team_name.replaceAll(" ","_")+"')>Delete Team</a></li>"
       +  " <li><li class='treeview'>"
       +  " <a href='#'><i class='fa fa-medkit'></i> <span>Members</span>"
       +  " <span class='pull-right-container'><i class='fa fa-angle-left pull-right'></i></span>"   
@@ -205,6 +201,7 @@ function EmpTreeNode(emp_name,emp_id)
   // This function takes a parameter named id and updates the database by 
   // removing the manager record with the corresponding id
   function RemoveTeam(team_name){
+    team_name = team_name.replaceAll("_"," ");
     var result= confirm("Are you sure you want to delete " +team_name + " record?");
     if (result == true) {
       $.ajax({
@@ -239,7 +236,7 @@ function EmpTreeNode(emp_name,emp_id)
     }
   }
   function RemoveTeamMember(team_name){
-    var result= confirm("Are you sure you want to delete " +team_name + " record?");
+    var result= confirm("Are you sure you want to delete " +team_name+ " record?");
     if (result == true) {
       $.ajax({
         // Post request used to update server's database
@@ -275,7 +272,7 @@ function EmpTreeNode(emp_name,emp_id)
 
   var currentWorkingTeam = "";
   function changeCurrentWorkingTeam(newV) {
-    currentWorkingTeam = newV;
+    currentWorkingTeam = newV.replaceAll("_"," ");
     $.ajax(
       {
         type: "POST",
