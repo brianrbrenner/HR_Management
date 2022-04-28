@@ -48,7 +48,7 @@
                   </div>
                 <!-- /.box -->
                 </div>
-                <button class="button-30" role="button"><a href="/HR_ManagementEmployee/adminform.php">View Employee Salaries</button>
+                <button class="button-30" role="button"><a href="/HR_Management/Employee/adminform.php">View Employee Salaries</button>
                 
               </div>';
               
