@@ -46,7 +46,7 @@ class Employee{
         $query = "SELECT
             `emp_id`,`name`, `dept_name`, `phone`,`email`, `start_date`
         FROM
-        employeeRedacted
+            employeeRedacted
         ORDER BY
             emp_id DESC";
 
@@ -109,6 +109,21 @@ class Employee{
 
             ORDER BY
                 emp_id DESC";
+      
+      
+          // prepare query statement
+          $stmt = $this->conn->prepare($query);
+        
+          // execute query
+          $stmt->execute();
+          return $stmt;
+  
+      }
+
+        // Returns the number of employees in the given department
+      function count_emp_in_dept($department_name)
+      {
+        $query = "SELECT countEmployeesInDept('".$department_name."')";
       
       
           // prepare query statement

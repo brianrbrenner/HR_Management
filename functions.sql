@@ -2,7 +2,7 @@
 --Calculate the number of employees withn each department
 DELIMITER //
 
-create function countEmployeesInDept(department_name varchar(30))
+create function countEmployeesInDept(department_name varchar(20))
 	returns integer
 			begin
 	declare employeeCount integer;
@@ -28,4 +28,18 @@ create function countTeamsManaged(manager_id int(6))
 	return teamTotal;
 	END //
 
+DELIMITER ;
+
+-- Calculate the Average Salary of a given department
+DELIMITER //
+
+create function find_dept_avg_salary(department_name varchar(20))
+	returns numeric(12,2)
+			begin
+	declare dept_avg_salary numeric(12,2);
+		select avg(salary) into dept_avg_salary
+		from employee, department
+		where employee.dept_name = department.dept_name;
+	return dep_avg_salary;
+	END //
 DELIMITER ;

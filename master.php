@@ -76,7 +76,7 @@ p.p1 {
 }
 /* Formatting label for search bars placed on their own pages */
 p.p1 {
-  margin-top: 5%;
+  margin-top: 1%;
   margin-left: 1%;
   font-size: 25px;
 }
@@ -128,20 +128,6 @@ p.p2 {
 
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-
-
-  
-
-      <!-- search form (Optional) -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-              </button>
-            </span>
-        </div>
-      </form>
 
 
       <!-- /.search form -->
@@ -197,8 +183,6 @@ p.p2 {
           <ul class="treeview-menu">
             <li><a href="/HR/Team/create.php">Add Team</a></li>
             <li><a href="/HR/Team">View Teams</a></li>
-            <li><a href="/HR/Team/addEmployee.php">Add Employee to Team</a></li>
-            <li><a href="/HR/Team/rmEmployee.php">Remove Employee From Team</a></li>
           </ul>
         </li>
       </ul>

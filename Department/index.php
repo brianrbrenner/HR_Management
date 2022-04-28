@@ -15,6 +15,7 @@
                               <th>Phone</th>
                               <th>Building</th>
                               <th>Budget</th>
+                              <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -25,6 +26,7 @@
                             <th>Phone</th>
                             <th>Building</th>
                             <th>Budget</th>
+                            <th>Action</th>
                           </tr>
                         </tfoot>
                       </table>

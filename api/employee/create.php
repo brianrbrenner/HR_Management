@@ -62,7 +62,7 @@ if(isset($_POST["action"]))
         $employee->start_date = $_POST['start_date'];
         $employee->start_date = date('Y-m-d H:i:s');
 
-        // create the doctor
+        // create the employee
         if($employee->create()){
             $employee_arr=array(
                 "status" => true,
