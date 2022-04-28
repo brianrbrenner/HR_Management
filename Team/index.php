@@ -89,12 +89,12 @@
 
 
 function redirectToCreate() {
-  window.location.href = '/HR/HR_Management/Team/create.php';
+  window.location.href = '/HR_Management/Team/create.php';
 }
 
 
 
-function TeamTreeTop(team_name) 
+function TeamTreeTop(team_name,data2) 
 {
     var r = "";
     r += "<a href='#'><i class='fa fa-medkit'></i> <span>" + team_name + "</span></a>"
@@ -110,6 +110,16 @@ function TeamTreeTop(team_name)
 
       var body = document.querySelector("#team_tree");
       $(r).appendTo(body);
+
+
+      var team_content = ""
+      for(var employee in data2)
+      {
+        team_content += EmpTreeNode(data2[employee].name,data2[employee].emp_id);
+      }
+
+      var body = document.querySelector("#" + tn);
+      $(team_content).appendTo(body);
     
 }
 function EmpTreeNode(emp_name,emp_id)
@@ -166,22 +176,9 @@ function EmpTreeNode(emp_name,emp_id)
               {
                 var tn = "";
                 tn = ar[currentIndex];
-                var tagName= "";
-                tagName = "#" + tn;
                 currentIndex += 1;
               
-                TeamTreeTop(tn);
-
-                var team_content = ""
-                
-
-                for(var employee in data2)
-                {
-                  team_content += EmpTreeNode(data2[employee].name,data2[employee].emp_id);
-                }
-
-                var body = document.querySelector(tagName);
-                $(team_content).appendTo(body);
+                TeamTreeTop(tn,data2);
               }
 
           })

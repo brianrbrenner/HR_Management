@@ -44,6 +44,37 @@ $content = '<div class="row">
 include('../master.php');
 ?>
 <script>
+$(document).ready(function(){
+    $ajax(
+        {
+            type: "POST",
+            url: "../api/team/read",
+            dataType: 'json',
+            data: {
+                action: "getMan",
+            },
+            success: function(data){
+                for (var dep in data)
+                    {
+                        response+= 
+                        "<option value="+ data[dep].dept_name +">" + data[dep].dept_name + "</option>";
+                    }
+                    $(response).appendTo($("#dept_opt"));
+            },
+            error: function(data){
+
+            }
+
+        }
+    )
+
+
+});
+
+
+
+
+
   function AddManager(){
 
         $.ajax(
