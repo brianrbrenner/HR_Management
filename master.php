@@ -183,8 +183,6 @@ p.p2 {
           <ul class="treeview-menu">
             <li><a href="/HR_Management/Team/create.php">Add Team</a></li>
             <li><a href="/HR_Management/Team">View Teams</a></li>
-            <li><a href="/HR_Management/Team/addEmployee.php">Add Employee to Team</a></li>
-            <li><a href="/HR_Management/Team/rmEmployee.php">Remove Employee From Team</a></li>
           </ul>
         </li>
       </ul>

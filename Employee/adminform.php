@@ -60,7 +60,7 @@ $content = '
             success: function (result) {
                 if (result == true) {
                     alert("Hello admin! Retrieving Salary Data");
-                    window.location.href = '/HR/Employee/readSalary.php';
+                    window.location.href = '/HR_Management/Employee/readSalary.php';
                 }
                 else {
                     alert("Invalid Credentials");
