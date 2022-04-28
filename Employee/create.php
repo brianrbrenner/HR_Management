@@ -110,7 +110,7 @@ $content = '
             success: function (result) {
                 if (result['status'] == true) {
                     alert("Successfully Added New Employee!");
-                    window.location.href = '/HR/Employee';
+                    window.location.href = '/HR_Management/Employee';
                 }
                 else {
                     alert(result['message']);

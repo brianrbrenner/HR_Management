@@ -98,7 +98,7 @@
           // indicating such
           if (result['status'] == true) {
             alert("Successfully Removed Department!");
-            window.location.href = '/HR/department';
+            window.location.href = '/HR_Management/department';
 
           }
           // Otherwise, if it could not be deleted, print the message contained within

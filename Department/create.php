@@ -67,7 +67,7 @@ include('../master.php');
             success: function (result) {
                 if (result['status'] == true) {
                     alert("Successfully Added New Department!");
-                    window.location.href = '/HR/department';
+                    window.location.href = '/HR_Management/department';
                 }
                 else {
                     alert(result['message']);

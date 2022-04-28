@@ -62,7 +62,7 @@ include('../master.php');
             success: function (result) {
                 if (result['status'] == true) {
                     alert("Successfully Added New Manager!");
-                    window.location.href = '/HR/manager';
+                    window.location.href = '/HR_Managementmanager';
                 }
                 else {
                     alert(result['message']);

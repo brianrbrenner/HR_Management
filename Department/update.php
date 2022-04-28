@@ -80,7 +80,7 @@ $(document).ready(function(){
                 alert("hehe");
                 if (result['status'] == true) {
                     alert("Successfully Updated Department!");
-                    window.location.href = '/HR/department';
+                    window.location.href = '/HR_Management/department';
                 }
                 else {
                     alert(result['message']);
