@@ -222,7 +222,40 @@ function EmpTreeNode(emp_name,emp_id)
       });
     }
   }
+  function RemoveTeamMember(team_name){
+    var result= confirm("Are you sure you want to delete " +team_name + " record?");
+    if (result == true) {
+      $.ajax({
+        // Post request used to update server's database
+        type: "POST",
+        // delete.php specifies how to perform the delete operation
+        url: '../api/team/delete.php',
+        dataType: 'json',
+        data: {
+          team_name: team_name,
+        },
+        // if POST request fails
+        error: function(result) {
+          alert(result.responseText);
+        },
+        // If POST request succeeds
+        success: function(result) {
+          // if manager record was successfully removed, send message to browser
+          // indicating such
+          if (result['status'] == true) {
+            alert("successfully removed a team");
+            window.location.href = '/HR_Management/Team';
 
+          }
+          // Otherwise, if it could not be deleted, print the message contained within
+          // the deletion failure message
+          else {
+            alert(result['message']);
+          }
+        }
+      });
+    }
+  }
 
   var currentWorkingTeam = "";
   function changeCurrentWorkingTeam(newV) {
