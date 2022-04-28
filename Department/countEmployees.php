@@ -5,13 +5,12 @@
 // Define the content which is displayed within the master.php file
   $content = '<div>
                 <p class="p1">Find Number of Employees in Department</p>
-                <form action="#" method="get" class="sidebar-form">
                     <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Search by Department Name">
-                        <span class="input-group-btn">
-                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                            </button>
-                        </span>
+                        <input type="text" name="q" class="form-control" id="department_name" placeholder="Enter Department Name...">
+                          <span class="input-group-btn">
+                              <button type="submit" name="search" id="search-btn" class="btn btn-flat" onClick="searchByDept()"><i class="fa fa-search"></i>
+                              </button>
+                          </span>
                     </div>
                 </form>
             </div>';
@@ -22,41 +21,32 @@
 <!-- Start of page script -->
 <script>
 
+ // This function takes the department name input by the user through the search bar and 
+  // creates a Get request with it
+  function searchByDept(){
+    $.ajax(
+            {
+                type: "POST",
+                url:'../api/department/countInDept.php',
+                dataType: 'json',
+                data:{
+                    action: "findEmployeesinDept",
+                    department_name: $("#department_name").val(),
+                },
+                error: function (result) {
+                    alert("Error");
+                },
+                // upon success, this function creates tuples for each employee in the table 
+                // and appends them to the response variable
+                success: function(data) {
+                    console.log(data.num);
+                    
+        // appends the response to the the table whose id=employee
 
-  // This function takes a parameter named id and updates the database by 
-  // removing the employee record with the corresponding id
-  function Remove(id){
-    var result= confirm("Are you sure you want to delete this Employee Record?");
-    if (result == true) {
-      $.ajax({
-        // Post request used to update server's database
-        type: "POST",
-        // delete.php specifies how to perform the delete operation
-        url: '../api/employee/delete.php',
-        dataType: 'json',
-        data: {
-          id: id
-        },
-        // if POST request fails
-        error: function(result) {
-          alert(result.responseText);
-        },
-        // If POST request succeeds
-        success: function(result) {
-          // if employee record was successfully removed, send message to browser
-          // indicating such
-          if (result['status'] == true) {
-            alert("Successfully Removed Employee!");
-            window.location.reload();
+      }
 
-          }
-          // Otherwise, if it could not be deleted, print the message contained within
-          // the deletion failure message
-          else {
-            alert(result['message']);
-          }
-        }
-      });
-    }
-  }
+    });
+ 
+    
+}
 </script>

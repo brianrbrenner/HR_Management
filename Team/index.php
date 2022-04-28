@@ -25,15 +25,10 @@
                 <div class="col-xs-12">
                   <div class="box">
                     <div class="box-header">
-                     <h3 class="box-title">Team List List</h3>
+                     <h3 class="box-title">Team List</h3>
                     </div>
                     <!-- /.box-header -->
                     <div  class="box-body">
-                  
-
-
-
-
                   <ul class="sidebar-menu" data-widget="tree">
 
                     <li id = "team_tree" class="treeview">
@@ -41,7 +36,29 @@
                     </li>
                   </ul>
 
-
+                  <div id="myModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                      <h4 class="modal-title" id = "addEmpTitle">Add Employee To the Team </h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                        <div class="modal-body"><div  style="width:100%">
+                        <div class="col-md-5">
+                        <select id = "adding_emp" class="selectpicker form-control" multiple >
+                        
+                        </select></div>
+                        </div></div>   
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onClick=addEmployeeToTeam() >Submit</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                
+                  </div>
+                </div>
 
                   <div id="myModal" class="modal fade" role="dialog">
                   <div class="modal-dialog">
