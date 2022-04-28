@@ -36,15 +36,6 @@ CREATE TABLE IF NOT EXISTS `department` (
   PRIMARY KEY (`dept_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `department`
---
-
-INSERT INTO `department` (`dept_name`, `budget`, `phone`, `building`) VALUES
-('comp', 1000000.00, 23434234, 'csi'),
-('econ', 6000000.55, 23434234, 'csi'),
-('math', 420401.00, 23434234, 'csi');
-
 -- --------------------------------------------------------
 
 --
@@ -63,16 +54,6 @@ CREATE TABLE IF NOT EXISTS `employee` (
   PRIMARY KEY (`emp_id`),
   FOREIGN KEY (`dept_name`) references department(`dept_name`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `employee`
---
-
-INSERT INTO `employee` (`emp_id`, `name`, `dept_name`, `phone`, `email`, `salary`, `start_date`) VALUES
-(3, 'thang3', 'math',  23434234, 'dfsjdlf', 95000.00, '2018-05-01 13:07:24'),
-(5, 'thang1', 'comp',  23434234, 'dfsjdlf', 120000.50, '2018-05-01 13:07:24'),
-(7, 'thang2', 'econ',  23434234, 'dfsjdlf', 64000.99, '2018-05-01 13:07:24');
-
 
 -- --------------------------------------------------------
 
@@ -135,14 +116,6 @@ CREATE TABLE IF NOT EXISTS `team` (
 --
 -- Dumping data for table `team`
 --
-
-INSERT INTO `team` (`team_name`, `manager_id`, `total_members`) VALUES
-('JS', 567891, 1),
-('PYTHON', 567898, 1),
-('PHP', 567890, 1);
-
-
-
 
 DROP TABLE IF EXISTS `emp_team`;
 CREATE TABLE IF NOT EXISTS `emp_team` (
@@ -235,7 +208,7 @@ create function find_dept_avg_salary(department_name varchar(20))
 		select avg(salary) into dept_avg_salary
 		from employee, department
 		where employee.dept_name = department.dept_name;
-	return dep_avg_salary;
+	return dept_avg_salary;
 	END //
 DELIMITER ;
 
