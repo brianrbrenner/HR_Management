@@ -24,7 +24,7 @@ class Team{
         $this->conn = $db;
     }
 
-    // read all doctors
+    // read all teams
     function read(){
     
         // select all query
@@ -42,7 +42,7 @@ class Team{
         return $stmt;
     }
 
-    // get single doctor data
+    // get single teams data
     function read_single(){
     
         // select all query
@@ -61,7 +61,7 @@ class Team{
         return $stmt;
     }
 
-    // create doctor
+    // create teams
     function create(){
     
         if($this->isAlreadyExist()){
@@ -86,7 +86,7 @@ class Team{
         return false;
     }
 
-    // update doctor 
+    // update teams 
     function update(){
     
         // query to insert record
@@ -106,7 +106,7 @@ class Team{
         return false;
     }
 
-    // delete doctor
+    // delete teams
     function delete(){
         
         // query to insert record

@@ -1,6 +1,6 @@
 <?php
 
-// This file defines the operations used to update the attributes of a doctor
+// This file defines the operations used to update the attributes of a team
 // tuple
 
 // Include the database and object files so that the manager and database objects

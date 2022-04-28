@@ -179,7 +179,7 @@ class Employee{
         return false;
     }
 
-    // delete doctor
+    // delete employee
     function delete(){
         
         // query to insert record

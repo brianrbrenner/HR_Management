@@ -16,7 +16,7 @@ class Department{
         $this->conn = $db;
     }
 
-    // read all doctors
+    // read all department
     function read(){
     
         // select all query
