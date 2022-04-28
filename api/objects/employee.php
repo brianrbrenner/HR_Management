@@ -46,7 +46,7 @@ class Employee{
         $query = "SELECT
             `emp_id`,`name`, `dept_name`, `phone`,`email`, `start_date`
         FROM
-        employeeRedacted
+        employee
         ORDER BY
             emp_id DESC";
 
