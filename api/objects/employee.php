@@ -5,6 +5,7 @@ class Employee{
     private $conn;
     private $table_name = "employee";
     private $team_linking_table = "emp_team";
+    
  
     // object properties
     public $id;
@@ -20,31 +21,51 @@ class Employee{
         $this->conn = $db;
     }
 
-    // read all employee
-    function read(){
+    // read all employees with salary information
+    function read_with_salary(){
         $query = "SELECT
-        `emp_id`, `name`, `dept_name`, `phone`,`email`,`salary`,`start_date`
-    FROM
-        " . $this->table_name . " 
-    ORDER BY
-        emp_id DESC";
+            `emp_id`,`name`, `dept_name`, `phone`,`email`, `salary`, `start_date`
+        FROM
+            ".$this->table_name."
+        ORDER BY
+            emp_id DESC";
 
     // prepare query statement
     $stmt = $this->conn->prepare($query);
 
     // execute query
-    $stmt->execute();
-    return $stmt;
+        $stmt->execute();
+        return $stmt;
     }
 
-    // get single employee data
+
+    // read all employees without salary information
+    // This relies on the employeeRedacted view, a view of employee without
+    // the salary attribute
+    function read(){
+        $query = "SELECT
+            `emp_id`,`name`, `dept_name`, `phone`,`email`, `start_date`
+        FROM
+        employeeRedacted
+        ORDER BY
+            emp_id DESC";
+
+    // prepare query statement
+    $stmt = $this->conn->prepare($query);
+
+    // execute query
+        $stmt->execute();
+        return $stmt;
+    }
+
+    // get single employee data without salary information
     function read_single(){
     
-        // select all query
+        // select all employees from view containing no salary attribute
         $query = "SELECT
-                    `emp_id`, `name`, `dept_name`, `phone`,`email`,`salary`,`start_date`
+                    `emp_id`, `name`, `dept_name`, `phone`,`email`, `start_date`
                 FROM
-                    " . $this->table_name . " 
+                    employeeRedacted
                 WHERE
                     emp_id= '".$this->id."'";
     
@@ -55,24 +76,49 @@ class Employee{
         $stmt->execute();
         return $stmt;
     }
-
+    // Find all teams an employee belongs to
     function read_by_team_name($tn)
     {
         $query = "SELECT
-        *
-    FROM
-        " . $this->table_name . " JOIN ". $this->team_linking_table ." ON " . $this->table_name . ".emp_id = ". $this->team_linking_table .".emp_id
-    WHERE ". $this->team_linking_table .".team_name =  '".$tn."'";
+            *
+            FROM
+                " . $this->table_name . " JOIN ". $this->team_linking_table ." ON " . $this->table_name . ".emp_id = ". $this->team_linking_table .".emp_id
+             WHERE ". $this->team_linking_table .".team_name =  '".$tn."'";
     
+    
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
 
-    // prepare query statement
-    $stmt = $this->conn->prepare($query);
-
-    // execute query
-    $stmt->execute();
-    return $stmt;
+        // execute query
+        $stmt->execute();
+        return $stmt;
 
     }
+
+
+      // Select all employees within the given department
+      // This uses parameter binding to protect against SQL injection
+      function read_by_dept_name($department_name)
+      {
+        $query = "SELECT
+                `emp_id`,`name`, `dept_name`, `phone`,`email`, `start_date`
+            FROM
+                " .$this->table_name."
+            WHERE
+                dept_name LIKE '%".$department_name."%'
+
+            ORDER BY
+                emp_id DESC";
+      
+      
+          // prepare query statement
+          $stmt = $this->conn->prepare($query);
+        
+          // execute query
+          $stmt->execute();
+          return $stmt;
+  
+      }
 
     // create employee
     function create(){

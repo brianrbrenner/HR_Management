@@ -1,9 +1,7 @@
 <?php
 $content = '
-
             <style>
             </style>
-
                 <div class="row">
                 <!-- left column -->
                 <div class="col-md-12">
@@ -21,9 +19,6 @@ $content = '
                           <input type="text" class="form-control" id="name" placeholder="Enter Name">
                         </div>
                         
-
-
-
                     <div class="form-group">
                         <label for="exampleInputName1">Department</label>
                         <select id = "dept_opt" class="form-select" aria-label="Default select example">
@@ -31,18 +26,10 @@ $content = '
                         </select>                   
                     </div>
                     
-
-
-
-
-
                         <div class="form-group">
                           <label for="exampleInputphone">Phone</label>
                           <input type="text" class="form-control" id="phone" placeholder="Enter Phone">
                         </div>
-
-
-
                         <div class="form-group">
                           <label for="exampleInputEmail1">Email address</label>
                           <input type="email" class="form-control" id="email" placeholder="Enter email">

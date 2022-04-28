@@ -2,7 +2,7 @@
 
 // This file defines the operations used to display all manager tuples onto the browser 
 
-// Include the database and object fiels
+// Include the database and object files
 include_once '../config/database.php';
 include_once '../objects/team.php';
 include_once '../objects/employee.php';

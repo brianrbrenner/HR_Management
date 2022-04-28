@@ -10,7 +10,7 @@ $content = '<div class="row">
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Add Deparment</h3>
+                            <h3 class="box-title">Add Department</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
@@ -18,7 +18,7 @@ $content = '<div class="row">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputName1">Department Name</label>
-                                <input type="text" class="form-control" id="dept_name" placeholder="Enter Name">
+                                <input type="text" class="form-control" id="dept_name" placeholder="Enter Department Name">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Phone</label>
@@ -26,11 +26,11 @@ $content = '<div class="row">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Building</label>
-                                <input type="email" class="form-control" id="building" placeholder="Enter email">
+                                <input type="email" class="form-control" id="building" placeholder="Enter building">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Budget</label>
-                                <input type="email" class="form-control" id="budget" placeholder="Enter email">
+                                <input type="email" class="form-control" id="budget" placeholder="Enter budget">
                         </div>
                         </div>
                         

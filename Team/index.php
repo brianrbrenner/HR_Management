@@ -121,7 +121,6 @@ function TeamTreeTop(team_name,data2,currentIndex)
 }
 function EmpTreeNode(emp_name,emp_id)
 {
-
     var r = "";
     r += "<li><li id =" +emp_id + " class='treeview'>"
       +  "<a href='#'> <span>" +emp_name + "</span>"

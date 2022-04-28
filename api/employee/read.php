@@ -1,6 +1,6 @@
 <?php
 
-// This file defines the operations used to display all manager tuples onto the browser 
+// This file defines the operations used to display all employee tuples onto the browser 
 
 // Include the database and object fiels
 include_once '../config/database.php';
@@ -39,11 +39,12 @@ else
                     "dept_name" => $dept_name,
                     "phone" => $phone,
                     "email" => $email,
-                    "salary" => $salary,
                     "start_date" => $start_date,
                 );
+                // Append the employee_item to the list of employees
                 array_push($employee_arr["employee"], $employee_item);
             }
+            // Print the entire list of employees to the browser
             echo json_encode($employee_arr["employee"]);
         }
         else{

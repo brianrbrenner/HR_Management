@@ -11,20 +11,22 @@
                       <table id="managers" class="table table-bordered table-hover">
                         <thead>
                           <tr> 
+                            <th>ID</th>
                             <th>Name</th>
-                              <th>Phone</th>
-                              <th>Email</th>
-                              <th>Action</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
                         </tbody>
                         <tfoot>
                           <tr>
+                            <th>ID</th>
                             <th>Name</th>
-                              <th>Phone</th>
-                              <th>Email</th>
-                              <th>Action</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Action</th>
                           </tr>
                         </tfoot>
                       </table>
@@ -57,6 +59,7 @@
           response += 
           //console.log(data[user].manager_id);
             "<tr>"+
+              "<td>"+data[user].manager_id+"</td>"+
               "<td>"+data[user].name+"</td>"+
               "<td>"+data[user].phone+"</td>"+
               "<td>"+data[user].email+"</td>"+

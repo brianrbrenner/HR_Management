@@ -1,6 +1,6 @@
 <?php 
 
-// This file defines the operations used to create new manager tuples within
+// This file defines the operations used to create new employee tuples within
 // our tables in mySQL from the input on the browser
 
 // include the database and all object files
@@ -14,10 +14,10 @@ $database = new Database();
 $db = $database->getConnection(); 
 
 
-// Create new manager object using the db connection handle to establish 
+// Create new employee object using the db connection handle to establish 
 // the connection between this object and the db
 
-// Set attribute values of manager object using information retrieved from
+// Set attribute values of employee object using information retrieved from
 // user input thorugh POST request
 
 if(isset($_POST["action"]))
@@ -84,5 +84,4 @@ if(isset($_POST["action"]))
         print_r(json_encode($employee_arr));
     }
 }
-
 ?>
