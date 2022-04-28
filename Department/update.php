@@ -59,22 +59,25 @@ $(document).ready(function(){
         });
     });
     function UpdateDepartment(){
+        var dep = "";
+        dep = "<?php echo $_GET['dept_name']; ?>";
         $.ajax(
         {
             type: "POST",
             url: '../api/department/update.php',
             dataType: 'json',
             data: {
-                dept_name: <?php echo $_GET['dept_name']; ?>,
-                name: $("#phone").val(),
-                phone: $("#budget").val(),
-                email: $("#building").val()      
+                dept_name: dep,
+                phone: $("#phone").val(),
+                budget: $("#budget").val(),
+                building: $("#building").val()      
 
             },
             error: function (result) {
-                alert(result.responseText);
+                alert("????");
             },
             success: function (result) {
+                alert("hehe");
                 if (result['status'] == true) {
                     alert("Successfully Updated Department!");
                     window.location.href = '/HR/department';
