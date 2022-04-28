@@ -70,9 +70,9 @@ class Team{
         
         // query to insert record
         $query = "INSERT INTO  ". $this->table_name ." 
-                        (`team_name`, `manager_id`, `total_memebers`)
+                        (`team_name`, `manager_id`,`total_members`)
                   VALUES
-                        ('".$this->team_name."', '".$this->manager_id."', '".$this->total_members."')";
+                        ('".$this->team_name."', '".$this->manager_id."', '0')";
     
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -168,6 +168,25 @@ class Team{
         }
         return false;
     }
+
+
+#region export 
+function getAvailableManager()
+{
+    // select all query
+    $query = "SELECT
+    `manager_id`, `name`
+    FROM manager ";
+
+    // prepare query statement
+    $stmt = $this->conn->prepare($query);
+
+    // execute query
+    $stmt->execute();
+
+    return $stmt;
+}
+#endregion
 
 
 }

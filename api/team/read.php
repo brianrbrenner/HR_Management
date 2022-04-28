@@ -98,6 +98,34 @@ else if($_POST['action'] == "readEmpByTeamName")
             echo json_encode(array());
         }
 }
+else if($_POST['action'] == "getMan")
+{
+    $database = new Database();
+    $db = $database->getConnection();
+    $team = new Team($db);
+    // Retrieve the select all manager statement by calling read() behavior
+    $stmt = $team->getAvailableManager();
+    $num = $stmt->rowCount();
+        // check if more than 0 record found
+        if($num>0){
+         
+            // employee array
+            $team_arr=array();
+            $team_arr['team']=array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                extract($row);
+                $team_item=array(
+                    "name" => $name,
+                    "manager_id" => $manager_id,
+                );
+                array_push($team_arr["team"], $team_item);
+            }
+            echo json_encode($team_arr["team"]);
+        }
+        else{
+            echo json_encode(array());
+        }
+}
 
 
 

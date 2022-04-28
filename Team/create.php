@@ -18,21 +18,22 @@ $content = '<div class="row">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputName1">Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                                <input type="text" class="form-control" id="team_name" placeholder="Enter Name">
                             </div>
+                            
+
+
                             <div class="form-group">
-                                <label for="exampleInputName1">Phone</label>
-                                <input type="email" class="form-control" id="phone" placeholder="Enter Phone">
+                            <label for="exampleInputName1">Department</label>
+                            <select id = "man_opt" class="form-select" aria-label="Default select example">
+                            </select>                   
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email">
-                            </div>
+                            
                         </div>
                         
                         <!-- /.box-body -->
                         <div class="box-footer">
-                            <input type="button" class="btn btn-primary" onClick="AddManager()" value="Submit"></input>
+                            <input type="button" class="btn btn-primary" onClick="AddTeam()" value="Submit"></input>
                         </div>
                         </form>
                     </div>
@@ -45,24 +46,27 @@ include('../master.php');
 ?>
 <script>
 $(document).ready(function(){
-    $ajax(
+    $.ajax(
         {
             type: "POST",
-            url: "../api/team/read",
+            url: "../api/team/read.php",
             dataType: 'json',
             data: {
                 action: "getMan",
             },
             success: function(data){
-                for (var dep in data)
+                response = "";
+                    for (var man in data)
                     {
                         response+= 
-                        "<option value="+ data[dep].dept_name +">" + data[dep].dept_name + "</option>";
+                                    "<option value="+ data[man].manager_id +">" + data[man].name + "</option>";
+                        
                     }
-                    $(response).appendTo($("#dept_opt"));
+                    
+                    $(response).appendTo($("#man_opt"));
             },
             error: function(data){
-
+                
             }
 
         }
@@ -75,25 +79,25 @@ $(document).ready(function(){
 
 
 
-  function AddManager(){
+  function AddTeam(){
 
         $.ajax(
         {
             type: "POST",
-            url: '../api/manager/create.php',
+            url: '../api/team/create.php',
             dataType: 'json',
             data: {
-                name: $("#name").val(),
-                phone: $("#phone").val(),        
-                email: $("#email").val()
+                action: "create",
+                team_name: $("#team_name").val(),
+                manager_id: $("#man_opt").val(),
+
             },
             error: function (result) {
                 alert(result.responseText);
             },
             success: function (result) {
                 if (result['status'] == true) {
-                    alert("Successfully Added New Manager!");
-                    window.location.href = '/HR/manager';
+                    window.location.href = '/HR_Management/Team';
                 }
                 else {
                     alert(result['message']);
