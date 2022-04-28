@@ -51,10 +51,11 @@
     $.ajax({
       // Type specifies type of request: in this case, we are using a get request
       // to get data from a database
-      type: "GET",
+      type: "POST",
       // url of file which specifies how to ge the data
       url: "../api/employee/read.php",
       dataType: 'json',
+      data:{action: "read"},
       // upon success, this function creates tuples for each manager in the table 
       // and appends them to the response variable
       success: function(data) {

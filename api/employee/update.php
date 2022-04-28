@@ -44,3 +44,4 @@ else {
 // Print the json encoded status, message to browser
 print_r(json_encode($employee_arr));
 ?>
+

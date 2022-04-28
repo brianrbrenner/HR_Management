@@ -17,19 +17,18 @@ $content = '<div class="row">
                         <form role="form">
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="exampleInputName1">Team Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                                <label for="exampleInputName1">Name</label>
+                                <input type="text" class="form-control" id="team_name" placeholder="Enter Name">
                             </div>
-                                <div class="form-group">
-                                    <label for="exampleInputName1">Manager ID</label>
-                                    <input type="text" class="form-control" id="manager_id" placeholder="Enter Manager ID">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputName1">Team Members</label>
-                                    <select id = "team_members" multiple={true} defaultvalue={}style={ width:100px } class="form-control" aria-label="Default select example">
-                                        <option selected></option>
-                                    </select>           
-                            </div> 
+                            
+
+
+                            <div class="form-group">
+                            <label for="exampleInputName1">Department</label>
+                            <select id = "man_opt" class="form-select" aria-label="Default select example">
+                            </select>                   
+                            </div>
+                            
                         </div>
                         
                         <!-- /.box-body -->
@@ -46,6 +45,40 @@ $content = '<div class="row">
 include('../master.php');
 ?>
 <script>
+$(document).ready(function(){
+    $.ajax(
+        {
+            type: "POST",
+            url: "../api/team/read.php",
+            dataType: 'json',
+            data: {
+                action: "getMan",
+            },
+            success: function(data){
+                response = "";
+                    for (var man in data)
+                    {
+                        response+= 
+                                    "<option value="+ data[man].manager_id +">" + data[man].name + "</option>";
+                        
+                    }
+                    
+                    $(response).appendTo($("#man_opt"));
+            },
+            error: function(data){
+                
+            }
+
+        }
+    )
+
+
+});
+
+
+
+
+
   function AddTeam(){
 
         $.ajax(
@@ -54,17 +87,17 @@ include('../master.php');
             url: '../api/team/create.php',
             dataType: 'json',
             data: {
-                team_name: $("#name").val(),
-                manager_id: $("#manager_id").val(),        
-                total_members: $("#team_members").val()
+                action: "create",
+                team_name: $("#team_name").val(),
+                manager_id: $("#man_opt").val(),
+
             },
             error: function (result) {
                 alert(result.responseText);
             },
             success: function (result) {
                 if (result['status'] == true) {
-                    alert("Successfully Added New Team!");
-                    window.location.href = '/HR/team';
+                    window.location.href = '/HR_Management/Team';
                 }
                 else {
                     alert(result['message']);

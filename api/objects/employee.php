@@ -4,6 +4,7 @@ class Employee{
     // database connection and table name
     private $conn;
     private $table_name = "employee";
+    private $team_linking_table = "emp_team";
  
     // object properties
     public $id;
@@ -53,6 +54,24 @@ class Employee{
         // execute query
         $stmt->execute();
         return $stmt;
+    }
+
+    function read_by_team_name($tn)
+    {
+        $query = "SELECT
+        *
+    FROM
+        " . $this->table_name . " JOIN ". $this->team_linking_table ." ON " . $this->table_name . ".emp_id = ". $this->team_linking_table .".emp_id
+    WHERE ". $this->team_linking_table .".team_name =  '".$tn."'";
+    
+
+    // prepare query statement
+    $stmt = $this->conn->prepare($query);
+
+    // execute query
+    $stmt->execute();
+    return $stmt;
+
     }
 
     // create employee
@@ -137,5 +156,22 @@ class Employee{
         else{
             return false;
         }
+    }
+    function readAddableEmp($team_name)
+    {
+        $query = "SELECT *
+        FROM employee 
+        WHERE emp_id 
+        NOT IN (
+            SELECT emp_team.emp_id 
+            FROM emp_team 
+            where emp_team.team_name= '".$team_name."')";
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+    
+        // execute query
+        $stmt->execute();
+    
+        return $stmt;
     }
 }

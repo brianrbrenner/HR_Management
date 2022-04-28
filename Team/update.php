@@ -22,7 +22,7 @@ $content = '<div class="row">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputName1">Team Members</label>
-                                    <select id = "team_members" multiple={true} style={ width:100px } class="form-control" aria-label="Default select example">
+                                    <select id = "team_members" multiple={true} defaultvalue={}style={ width:100px } class="form-control" aria-label="Default select example">
                                         <option selected></option>
                                     </select>                   
                                 </div> 

@@ -84,4 +84,5 @@ if(isset($_POST["action"]))
         print_r(json_encode($employee_arr));
     }
 }
+
 ?>
