@@ -20,10 +20,9 @@ $department = new Department($db);
 // Set attribute values of manager object using information retrieved from
 // user input thorugh POST request
 $department->dept_name= $_POST['dept_name'];
-$deptartment->budget = $_POST['budget'];
+$department->budget = $_POST['budget'];
 $department->phone = $_POST['phone'];
 $department->building = $_POST['building'];
-
 
 // Now that all (except id which is automatically assigned) attributes are
 // assigned, create manager object
@@ -34,7 +33,7 @@ if ($department->create()){
         "status" => true,
         "message" => "Successfully Created New Department!",
         "dept_name" => $department->dept_name,
-        "budget" => $deptartment->budget,
+        "budget" => $department->budget,
         "phone" => $department->phone,
         "building" => $department->building
      );

@@ -28,7 +28,7 @@ $num = $stmt->rowCount();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 extract($row);
                 $employee_item=array(
-                    //"emp_id" => $emp_id,
+                    "emp_id" => $emp_id,
                     "name" => $name,
                     "dept_name" => $dept_name,
                     "phone" => $phone,

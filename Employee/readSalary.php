@@ -11,6 +11,7 @@
                       <table id="employee" class="table table-bordered table-hover">
                         <thead>
                           <tr> 
+                              <th>ID</th>
                               <th>Name</th>
                               <th>Department name</th>
                               <th>Phone</th>
@@ -24,13 +25,14 @@
                         </tbody>
                         <tfoot>
                           <tr>
-                          <th>Name</th>
-                          <th>Department name</th>
-                          <th>Phone</th>
-                          <th>Email</th>
-                          <th>Salary</th>
-                          <th>Start day</th>
-                          <th>Action</th>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Department name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Salary</th>
+                            <th>Start day</th>
+                            <th>Action</th>
                           </tr>
                         </tfoot>
                       </table>
@@ -62,7 +64,7 @@
         for(var user in data){
           response += 
                 "<tr>"+
-                //"<td>"+data[user].emp_id+"</td>"+
+                "<td>"+data[user].emp_id+"</td>"+
                 "<td>"+data[user].name+"</td>"+
                 "<td>"+data[user].dept_name+"</td>"+
                 "<td>"+data[user].phone+"</td>"+

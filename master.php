@@ -68,6 +68,24 @@
   box-shadow: #D6D6E7 0 3px 7px inset;
   transform: translateY(2px);
 }
+
+p.p1 {
+  margin-top: 5%;
+  margin-left: 1%;
+  font-size: 25px;
+}
+/* Formatting label for search bars placed on their own pages */
+p.p1 {
+  margin-top: 5%;
+  margin-left: 1%;
+  font-size: 25px;
+}
+/* Formatting label for search bars placed on same page as other elements */
+p.p2 {
+  margin-top: 1%;
+  margin-left: 1%;
+  font-size: 25px;
+}
 </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -154,6 +172,7 @@
           <ul class="treeview-menu">
             <li><a href="/HR/Department/create.php">Add Department</a></li>
             <li><a href="/HR/Department">View Departments</a></li>
+            <li><a href="/HR/Department/countEmployees.php">Number of Employees in Department</a></li>
           </ul>
 
            <!-- Employees button -->

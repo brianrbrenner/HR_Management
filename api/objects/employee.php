@@ -95,6 +95,31 @@ class Employee{
 
     }
 
+
+      // Select all employees within the given department
+      // This uses parameter binding to protect against SQL injection
+      function read_by_dept_name($department_name)
+      {
+        $query = "SELECT
+                `emp_id`,`name`, `dept_name`, `phone`,`email`, `start_date`
+            FROM
+                " .$this->table_name."
+            WHERE
+                dept_name LIKE '%".$department_name."%'
+
+            ORDER BY
+                emp_id DESC";
+      
+      
+          // prepare query statement
+          $stmt = $this->conn->prepare($query);
+        
+          // execute query
+          $stmt->execute();
+          return $stmt;
+  
+      }
+
     // create employee
     function create(){
     

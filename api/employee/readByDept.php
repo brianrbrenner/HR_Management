@@ -16,9 +16,20 @@ $db = $database->getConnection();
 // Create new employee object using the ds connection handle to establish
 // a connection with the database
 $employee = new employee($db);
-// Retrieve the select all employee statement by calling read() behavior
-$stmt = $employee->read();
-$num = $stmt->rowCount();
+// Retrieve the select all employee within the given department
+
+if(isset($_POST["action"]))
+{
+
+    if($_POST["action"] == "employeeByDept")
+    {
+        // Store department name
+        $department_name = $_POST['department_name'];
+
+        // Execute SQL with department name
+        $stmt = $employee->read_by_dept_name($department_name);
+
+        $num = $stmt->rowCount();
         // check if more than 0 record found
         if($num>0){
          
@@ -44,4 +55,8 @@ $num = $stmt->rowCount();
         else{
             echo json_encode(array());
         }
+    }
+    
+}
+
 ?>
