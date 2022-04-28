@@ -94,7 +94,7 @@ function redirectToCreate() {
 
 
 
-function TeamTreeTop(team_name,data2) 
+function TeamTreeTop(team_name,data2,currentIndex) 
 {
     var r = "";
     r += "<a href='#'><i class='fa fa-medkit'></i> <span>" + team_name + "</span></a>"
@@ -105,20 +105,17 @@ function TeamTreeTop(team_name,data2)
       +  " <a href='#'><i class='fa fa-medkit'></i> <span>Members</span>"
       +  " <span class='pull-right-container'><i class='fa fa-angle-left pull-right'></i></span>"   
       +  " </a>"
-      +  " <ul id ="+ team_name +" class='treeview-menu'></ul></li></li>"
+      +  " <ul id =h"+ currentIndex +"h class='treeview-menu'></ul></li></li>"
       +  " </ul>"
 
       var body = document.querySelector("#team_tree");
       $(r).appendTo(body);
-
-
       var team_content = ""
       for(var employee in data2)
       {
         team_content += EmpTreeNode(data2[employee].name,data2[employee].emp_id);
       }
-
-      var body = document.querySelector("#" + tn);
+      var body = document.querySelector("#h" + currentIndex + "h");
       $(team_content).appendTo(body);
     
 }
@@ -178,7 +175,7 @@ function EmpTreeNode(emp_name,emp_id)
                 tn = ar[currentIndex];
                 currentIndex += 1;
               
-                TeamTreeTop(tn,data2);
+                TeamTreeTop(tn,data2,currentIndex);
               }
 
           })
@@ -229,7 +226,6 @@ function EmpTreeNode(emp_name,emp_id)
 
   var currentWorkingTeam = "";
   function changeCurrentWorkingTeam(newV) {
-    alert(newV);
     currentWorkingTeam = newV;
     $.ajax(
       {
