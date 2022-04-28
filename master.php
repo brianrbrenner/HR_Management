@@ -158,8 +158,8 @@ p.p2 {
           </a>
           <!-- Manager drop-down menu -->
           <ul class="treeview-menu">
-            <li><a href="/HR/Manager/create.php">Add Manager</a></li>
-            <li><a href="/HR/Manager">View Managers</a></li>
+            <li><a href="/HR_Management/Manager/create.php">Add Manager</a></li>
+            <li><a href="/HR_Management/Manager">View Managers</a></li>
           </ul>
 
           <!-- Departments button -->
@@ -170,9 +170,9 @@ p.p2 {
           </a>
           <!-- Departments drop-down menu -->
           <ul class="treeview-menu">
-            <li><a href="/HR/Department/create.php">Add Department</a></li>
-            <li><a href="/HR/Department">View Departments</a></li>
-            <li><a href="/HR/Department/countEmployees.php">Number of Employees in Department</a></li>
+            <li><a href="/HR_Management/Department/create.php">Add Department</a></li>
+            <li><a href="/HR_Management/Department">View Departments</a></li>
+            <li><a href="/HR_Management/Department/countEmployees.php">Number of Employees in Department</a></li>
           </ul>
 
            <!-- Employees button -->
@@ -183,8 +183,8 @@ p.p2 {
           </a>
           <!-- Employees drop-down menu -->
           <ul class="treeview-menu">
-            <li><a href="/HR/Employee/create.php">Add Employee</a></li>
-            <li><a href="/HR/Employee">View Employees</a></li>
+            <li><a href="/HR_Management/Employee/create.php">Add Employee</a></li>
+            <li><a href="/HR_Management/Employee">View Employees</a></li>
           </ul>
 
            <!-- Teams button -->
@@ -195,10 +195,10 @@ p.p2 {
           </a>
           <!-- Teams drop-down menu -->
           <ul class="treeview-menu">
-            <li><a href="/HR/Team/create.php">Add Team</a></li>
-            <li><a href="/HR/Team">View Teams</a></li>
-            <li><a href="/HR/Team/addEmployee.php">Add Employee to Team</a></li>
-            <li><a href="/HR/Team/rmEmployee.php">Remove Employee From Team</a></li>
+            <li><a href="/HR_Management/Team/create.php">Add Team</a></li>
+            <li><a href="/HR_Management/Team">View Teams</a></li>
+            <li><a href="/HR_Management/Team/addEmployee.php">Add Employee to Team</a></li>
+            <li><a href="/HR_Management/Team/rmEmployee.php">Remove Employee From Team</a></li>
           </ul>
         </li>
       </ul>

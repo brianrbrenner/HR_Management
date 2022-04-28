@@ -72,7 +72,7 @@ $(document).ready(function(){
             success: function (result) {
                 if (result['status'] == true) {
                     alert("Successfully Updated Managed!");
-                    window.location.href = '/HR/manager';
+                    window.location.href = '/HR_Management/manager';
                 }
                 else {
                     alert(result['message']);
